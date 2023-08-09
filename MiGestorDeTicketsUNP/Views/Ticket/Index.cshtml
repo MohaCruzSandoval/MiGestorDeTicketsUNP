@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Tickets>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    <a style="float:right" href="@Url.Action("Agregar","Ticket")"><i class="fa-solid fa-circle-plus"></i></a>
+    Listado de Tickets
+
+</h2>
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+
+        <tr>
+            <th># Ticket</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Usuario</th>
+            <th>Responsable</th>
+            <th>Actualizar</th>
+            <th>Ver</th>
+            <th>Eliminar</th>
+        </tr>
+
+
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.FechaInicio</td>
+                <td>@item.Status.Nombre</td>
+                <td>@item.Usuario.Nombres</td>
+                <td>@item.Responsable.Nombres</td>
+
+                <td align="center">
+                    <a href="@Url.Action("Actualizar","Ticket", new {Id=item.id })"><i class="fa-solid fa-pen-to-square" style="color: #148569;"></i></a>
+                </td>
+                <td align="center">
+                    <a href="@Url.Action("Detalle","Ticket", new {Id=item.id })"><i class="fa-solid fa-circle-info" style="color: #cdc70e;"></i></a>
+                </td>
+                <td align="center">
+                    <a href="#" onclick="getId(@item.id)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can" style="color: #7d1748;"></i></a>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">¿Está seguro de eliminar este ticket?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro de eliminar este ticket?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="EliminarTicket()">Sí, estoy seguro</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="" id="idTicket" />
+
+@section Scripts{
+    
+    <script>
+
+    function EliminarTicket() {
+        let url = '@Url.Action("Eliminar", "Ticket")';
+        url = url +'/'+ $("#idTicket").val();
+        window.location.href = url;
+
+    }
+    function getId(id) {
+
+        Console.Write(id);
+        $("#idTicket").val(id);
+        alert(id);
+    }
+
+
+</script>
+    }

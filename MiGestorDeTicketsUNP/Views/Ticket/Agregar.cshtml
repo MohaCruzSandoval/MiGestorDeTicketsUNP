@@ -1,0 +1,84 @@
+﻿@model MiGestorDeTicketsUNP.ViewModels.TicketsViewModels
+@{
+    ViewBag.Title = "Agregar";
+}
+
+<h2>
+    <a style="float:right" href="@Url.Action("Index","Ticket")"><i class="fa-solid fa-circle-left"></i></a>
+    Agregar Nuevo Ticket
+
+</h2>
+<hr />
+
+@using (Html.BeginForm("Agregar", "Ticket", FormMethod.Post))
+{
+
+
+<div class="form-group">
+        <label>Fecha de Creación</label>
+        
+        @Html.TextBoxFor(mod => mod.Ticket.FechaInicio, new { @class = "form-control", @required = "required", @type = "date" })
+    </div>
+<div class="form-group">
+    <label>Estado</label>
+
+    <select name="Tickets.idEstado" class="form-control" required="required">
+        <option value="">Seleccione...</option>
+        @foreach (var item in Model.Estados)
+        {
+            <option value="@item.id">@item.Nombre</option>
+        }
+
+
+    </select>
+
+
+
+</div>
+
+<div class="form-group">
+    <label>Usuario</label>
+
+    <select name="Tickets.idUsuario" class="form-control" required="required">
+        <option value="">Seleccione...</option>
+        @foreach (var item in Model.Usuarios)
+        {
+            <option value="@item.id">@item.Nombres</option>
+        }
+
+
+    </select>
+
+</div>
+<div class="form-group">
+    <label>Responsable</label>
+    
+
+    <select name="Tickets.idResponsable" class="form-control" required="required">
+
+        <option value="">Seleccione...</option>
+
+        @foreach (var item in Model.Responsables)
+        {
+            <option value="@item.id">@item.Nombres</option>
+        }
+
+
+    </select>
+
+</div>
+    <div class="form-group">
+        <label>Descripción</label>
+
+        @Html.TextBoxFor(mod => mod.Ticket.Descripcion, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <hr />
+
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-success" />
+    </div>
+
+}
+

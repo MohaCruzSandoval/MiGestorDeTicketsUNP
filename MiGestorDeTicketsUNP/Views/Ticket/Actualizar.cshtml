@@ -1,0 +1,89 @@
+﻿@model MiGestorDeTicketsUNP.ViewModels.TicketsViewModels
+@{
+    ViewBag.Title = "Actualizar";
+}
+
+<h2>
+    <a style="float:right" href="@Url.Action("Index","Ticket")"><i class="fa-solid fa-circle-left"></i></a>
+    Actualizar Ticket
+
+</h2>
+<hr />
+
+@using (Html.BeginForm("Actualizar", "Ticket", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Id de Ticket</label>
+
+        @Html.TextBoxFor(mod => mod.Ticket.id, new { @class = "form-control", @required = "required", @readonly="readonly" })
+    </div>
+
+    <div class="form-group">
+        <label>Fecha de Creación</label>
+
+        @Html.TextBoxFor(mod => mod.Ticket.FechaInicio, new { @class = "form-control", @required = "required" })
+    </div>
+    <div class="form-group">
+        <label>Estado</label>
+
+        <select name="Tickets.idEstado" class="form-control" required="required">
+            <option value="">Seleccione...</option>
+            @foreach (var item in Model.Estados)
+            {
+                <option value="@item.id @(item.id==Model.Ticket.idEstado ? "selected": "")">@item.Nombre</option>
+            }
+
+
+        </select>
+
+
+
+    </div>
+
+    <div class="form-group">
+        <label>Usuario</label>
+
+        <select name="Tickets.idUsuario" class="form-control" required="required">
+            <option value="">Seleccione...</option>
+            @foreach (var item in Model.Usuarios)
+            {
+                <option value="@item.id"@(item.id==Model.Ticket.idUsuario ? "selected": "")>@item.Nombres</option>
+            }
+
+
+        </select>
+
+    </div>
+    <div class="form-group">
+        <label>Responsable</label>
+
+
+        <select name="Tickets.idResponsable" class="form-control" required="required">
+
+            <option value="">Seleccione...</option>
+
+            @foreach (var item in Model.Responsables)
+            {
+                <option value="@item.id"@(item.id==Model.Ticket.idResponsable ? "selected": "")>@item.Nombres</option>
+            }
+
+
+        </select>
+
+    </div>
+    <div class="form-group">
+        <label>Descripción</label>
+
+        @Html.TextAreaFor(mod => mod.Ticket.Descripcion, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <hr />
+
+
+    <div class="form-group">
+        <input type="submit" value="Actualizar" class="btn btn-success" />
+    </div>
+
+}
+
+
