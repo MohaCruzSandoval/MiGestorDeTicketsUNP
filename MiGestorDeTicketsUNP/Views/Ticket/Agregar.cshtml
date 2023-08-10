@@ -10,7 +10,7 @@
 </h2>
 <hr />
 
-@using (Html.BeginForm("Agregar", "Ticket", FormMethod.Post))
+@using (Html.BeginForm("Agregar","Ticket", FormMethod.Post))
 {
 
 
@@ -22,7 +22,7 @@
 <div class="form-group">
     <label>Estado</label>
 
-    <select name="Tickets.idEstado" class="form-control" required="required">
+    <select name="Ticket.idEstado" class="form-control" required="required">
         <option value="">Seleccione...</option>
         @foreach (var item in Model.Estados)
         {
@@ -39,7 +39,7 @@
 <div class="form-group">
     <label>Usuario</label>
 
-    <select name="Tickets.idUsuario" class="form-control" required="required">
+    <select name="Ticket.idUsuario" class="form-control" required="required">
         <option value="">Seleccione...</option>
         @foreach (var item in Model.Usuarios)
         {
@@ -54,7 +54,7 @@
     <label>Responsable</label>
     
 
-    <select name="Tickets.idResponsable" class="form-control" required="required">
+    <select name="Ticket.idResponsable" class="form-control" required="required">
 
         <option value="">Seleccione...</option>
 
@@ -78,6 +78,7 @@
 
     <div class="form-group">
         <input type="submit" value="Guardar" class="btn btn-success" />
+       
     </div>
 
 }

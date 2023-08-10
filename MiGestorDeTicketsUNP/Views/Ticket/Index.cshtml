@@ -46,7 +46,9 @@
                 <td align="center">
                     <a href="#" onclick="getId(@item.id)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-can" style="color: #7d1748;"></i></a>
                 </td>
-
+               
+                  
+                
             </tr>
         }
 
@@ -77,23 +79,26 @@
     </div>
 </div>
 
-<input type="hidden" value="" id="idTicket" />
+<input type="hidden" value="" id="idTickets" />
 
 @section Scripts{
     
     <script>
 
-    function EliminarTicket() {
-        let url = '@Url.Action("Eliminar", "Ticket")';
-        url = url +'/'+ $("#idTicket").val();
+        function EliminarTicket() {
+            console.log("aqui");
+        let url ='@Url.Action("Eliminar", "Ticket")';
+            url = url + '/' + $("#idTickets").val();
+            console.log(url);
         window.location.href = url;
+            }
+            
+  
+        function getId(id) {
+            
+            $("#idTickets").val(id);
+            console.log($("#idTickets").val(id));
 
-    }
-    function getId(id) {
-
-        Console.Write(id);
-        $("#idTicket").val(id);
-        alert(id);
     }
 
 

@@ -7,7 +7,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/ddd5678044.js" crossorigin="anonymous"></script>
+  
 
 </head>
 <body>
@@ -22,8 +22,8 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="@Url.Action("Index", "Ticket")">Tickets</a>
                     </li>
-                    
-                   
+
+
                 </ul>
                 <form method="get" action="@Url.Action("Detalle","Ticket")" class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search" name="id">
@@ -44,11 +44,12 @@
             <p>&copy; @DateTime.Now.Year - UNP Todos los derechos reservados</p>
         </footer>
     </div>
-    
-        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-   
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/ddd5678044.js" crossorigin="anonymous"></script>
     @RenderSection("Scripts", false)
-   
+
 </body>
 </html>

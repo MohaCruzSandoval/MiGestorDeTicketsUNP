@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,8 +32,10 @@ namespace MiGestorDeTicketsUNP.Controllers
         [HttpPost]
         public ActionResult Agregar(Tickets ticket)
         {
+         
+           //Console.WriteLine(ticket);
             contex.Tickets.Add(ticket);
-            
+           
             contex.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -65,8 +68,10 @@ namespace MiGestorDeTicketsUNP.Controllers
             contex.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
         public ActionResult Eliminar(int Id)
         {
+           
              var Ticket = contex.Tickets.FirstOrDefault(x => x.id == Id);
             contex.Tickets.Remove(Ticket);
             contex.SaveChanges();
